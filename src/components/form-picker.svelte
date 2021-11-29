@@ -1,6 +1,7 @@
+
 <script>
   import { each } from "svelte/internal";
-  //export let booked;
+  export let booked;
   const dayStrings = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
   const dateNow = Date.now();
   let currentWeek = 0;
@@ -33,7 +34,7 @@
     }
     return timeSlots
   }
-  /*function isBooked(timeSlot){
+  function isBooked(timeSlot){
     let flag = false;
     booked.forEach(bookedSlot => {
       if(
@@ -46,7 +47,7 @@
       }
     });
     return flag;
-  }*/
+  }
 </script>
 
 <div class="form-picker">
@@ -76,3 +77,4 @@
     </div>
   </div>
 </div>
+{booked[0].name}

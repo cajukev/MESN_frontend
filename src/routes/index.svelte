@@ -1,4 +1,4 @@
-<!--<script context="module">
+<script context="module">
 	export const load = async ({ fetch }) => {
 		const res = await fetch('/api/meetings')
 			.then((response) => response.json())
@@ -14,13 +14,13 @@
 			props: { booked:  bookings }
 		};
 	};
-</script>-->
+</script>
 
 <script>
 	import Header from '../components/header.svelte';
   import FromPicker from '../components/form-picker.svelte';
   import FormPicker from '../components/form-picker.svelte';
-  //export let booked;
+  export let booked;
 </script>
 
 <Header></Header>
@@ -39,7 +39,7 @@
 
     </div>
   </section>
-  <FormPicker ></FormPicker>
+  <FormPicker booked={booked}></FormPicker>
 
 </div>
 
