@@ -4696,14 +4696,16 @@ var init_shims = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/meetings-9deba3be.js
-var meetings_9deba3be_exports = {};
-__export(meetings_9deba3be_exports, {
+// .svelte-kit/output/server/chunks/meetings-3cfb8672.js
+var meetings_3cfb8672_exports = {};
+__export(meetings_3cfb8672_exports, {
   get: () => get,
   post: () => post
 });
 async function get() {
-  const meetings = fetch("http://localhost:8080/api/meetings").then((response) => response.json());
+  const meetings = fetch("http://localhost:8080/api/meetings", {
+    mode: "cors"
+  }).then((response) => response.json());
   return {
     body: await meetings
   };
@@ -4731,22 +4733,22 @@ async function post(request) {
     body: await res
   };
 }
-var init_meetings_9deba3be = __esm({
-  ".svelte-kit/output/server/chunks/meetings-9deba3be.js"() {
+var init_meetings_3cfb8672 = __esm({
+  ".svelte-kit/output/server/chunks/meetings-3cfb8672.js"() {
     init_shims();
   }
 });
 
-// .svelte-kit/output/server/chunks/__layout-242cb0de.js
-var layout_242cb0de_exports = {};
-__export(layout_242cb0de_exports, {
+// .svelte-kit/output/server/chunks/__layout-366713ea.js
+var layout_366713ea_exports = {};
+__export(layout_366713ea_exports, {
   default: () => _layout
 });
 var css$1, Header, css, _layout;
-var init_layout_242cb0de = __esm({
-  ".svelte-kit/output/server/chunks/__layout-242cb0de.js"() {
+var init_layout_366713ea = __esm({
+  ".svelte-kit/output/server/chunks/__layout-366713ea.js"() {
     init_shims();
-    init_app_d8448494();
+    init_app_c181147f();
     css$1 = {
       code: "header.svelte-1vkojjp.svelte-1vkojjp{padding-top:2rem;padding-bottom:1rem;display:flex;flex-direction:row;justify-content:space-between;height:9rem}header.svelte-1vkojjp .logo.svelte-1vkojjp{display:flex;align-items:flex-end}header.svelte-1vkojjp .logo .logoKB.svelte-1vkojjp{height:100%}header.svelte-1vkojjp .logo .logoKB path.svelte-1vkojjp{stroke-dashoffset:688.246;animation:svelte-1vkojjp-pathAnim 10s linear alternate infinite}header.svelte-1vkojjp .logo .logoweb.svelte-1vkojjp{height:33%}header.svelte-1vkojjp p.svelte-1vkojjp{align-self:flex-end;margin-block-end:-0.4rem}@keyframes svelte-1vkojjp-pathAnim{100%{stroke-dashoffset:0}}",
       map: null
@@ -4771,9 +4773,9 @@ ${slots.default ? slots.default({}) : ``}`;
   }
 });
 
-// .svelte-kit/output/server/chunks/error-9f32c7a0.js
-var error_9f32c7a0_exports = {};
-__export(error_9f32c7a0_exports, {
+// .svelte-kit/output/server/chunks/error-d245d65b.js
+var error_d245d65b_exports = {};
+__export(error_d245d65b_exports, {
   default: () => Error2,
   load: () => load
 });
@@ -4781,10 +4783,10 @@ function load({ error: error2, status }) {
   return { props: { error: error2, status } };
 }
 var Error2;
-var init_error_9f32c7a0 = __esm({
-  ".svelte-kit/output/server/chunks/error-9f32c7a0.js"() {
+var init_error_d245d65b = __esm({
+  ".svelte-kit/output/server/chunks/error-d245d65b.js"() {
     init_shims();
-    init_app_d8448494();
+    init_app_c181147f();
     Error2 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       let { status } = $$props;
       let { error: error2 } = $$props;
@@ -4804,9 +4806,9 @@ ${error2.stack ? `<pre>${escape(error2.stack)}</pre>` : ``}`;
   }
 });
 
-// .svelte-kit/output/server/chunks/index-1b1bf8e2.js
-var index_1b1bf8e2_exports = {};
-__export(index_1b1bf8e2_exports, {
+// .svelte-kit/output/server/chunks/index-15547dd4.js
+var index_15547dd4_exports = {};
+__export(index_15547dd4_exports, {
   default: () => Routes,
   load: () => load2
 });
@@ -4814,10 +4816,10 @@ function addXDays(date, x) {
   return date + 1e3 * 60 * 60 * 24 * x;
 }
 var css$12, Form_picker, css2, load2, Routes;
-var init_index_1b1bf8e2 = __esm({
-  ".svelte-kit/output/server/chunks/index-1b1bf8e2.js"() {
+var init_index_15547dd4 = __esm({
+  ".svelte-kit/output/server/chunks/index-15547dd4.js"() {
     init_shims();
-    init_app_d8448494();
+    init_app_c181147f();
     css$12 = {
       code: ".form-picker.svelte-1rxms7.svelte-1rxms7{margin-top:3rem;display:grid;grid-template-columns:1fr 3fr}.form-picker.svelte-1rxms7 form.svelte-1rxms7{background-color:#efefef;border:1px solid #bbbbbb;padding:1rem;height:fit-content;margin-right:2rem}.form-picker.svelte-1rxms7 form label.svelte-1rxms7:not(.cb-label){display:block}.form-picker.svelte-1rxms7 form input[type=text].svelte-1rxms7{width:100%}.form-picker.svelte-1rxms7 .date-time-picker.svelte-1rxms7{background-color:#efefef;border:1px solid #bbbbbb;padding:1rem}.form-picker.svelte-1rxms7 .date-time-picker .date-picker.svelte-1rxms7{display:grid;grid-template-columns:2fr repeat(7, 1fr) 2fr;align-items:center;justify-items:center}.form-picker.svelte-1rxms7 .date-time-picker .date-picker .prev-button.svelte-1rxms7,.form-picker.svelte-1rxms7 .date-time-picker .date-picker .next-button.svelte-1rxms7{border:none;width:1.5rem;cursor:pointer}.form-picker.svelte-1rxms7 .date-time-picker .date-picker .date.svelte-1rxms7{text-align:center}.form-picker.svelte-1rxms7 .date-time-picker .date-picker .date .date-day.svelte-1rxms7{font-weight:400}.form-picker.svelte-1rxms7 .date-time-picker .date-picker .date .date-num.svelte-1rxms7{font-size:1.8rem;font-weight:700}.form-picker.svelte-1rxms7 .date-time-picker .date-picker .date .date-btn.svelte-1rxms7{width:1.5rem;padding:0;border:none;cursor:pointer}.form-picker.svelte-1rxms7 .date-time-picker .time-picker.svelte-1rxms7{margin-top:1rem;display:grid;grid-template-columns:repeat(6, 1fr);grid-template-rows:repeat(4, 1fr);gap:1rem}.form-picker.svelte-1rxms7 .date-time-picker .time-picker button.svelte-1rxms7{padding:0;margin:0;border:none}.form-picker.svelte-1rxms7 .date-time-picker .time-picker button.inactive.svelte-1rxms7{pointer-events:none}.form-picker.svelte-1rxms7 .date-time-picker .time-picker button.inactive .timeSlot.svelte-1rxms7{background:white;opacity:0.75}.form-picker.svelte-1rxms7 .date-time-picker .time-picker button.chosen.svelte-1rxms7{border:2px dashed black;background:#9ba3ee}.form-picker.svelte-1rxms7 .date-time-picker .time-picker button .timeSlot.svelte-1rxms7{border-radius:0.5rem;display:grid;justify-content:center;align-items:center;box-shadow:0px 0.125rem 0.25rem rgba(0, 0, 0, 0.1);background:#a6aef2;cursor:pointer;padding:0.25rem 0.1rem}.form-picker.svelte-1rxms7 .date-time-picker .time-picker button .timeSlot .timeSlot-time.svelte-1rxms7{font-size:1rem;font-weight:700;text-align:center}",
       map: null
@@ -4950,7 +4952,7 @@ var init_index_1b1bf8e2 = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/app-d8448494.js
+// .svelte-kit/output/server/chunks/app-c181147f.js
 function get_single_valued_header(headers, key) {
   const value = headers[key];
   if (Array.isArray(value)) {
@@ -6284,8 +6286,8 @@ function render(request, {
   return respond({ ...request, host }, options, { prerender });
 }
 var __accessCheck, __privateGet, __privateAdd, __privateSet, _map, absolute, scheme, chars, unsafeChars, reserved, escaped$1, objectProtoOwnPropertyNames, subscriber_queue, escape_json_string_in_html_dict, escape_html_attr_dict, s$1, s, ReadOnlyFormData, current_component, escaped, missing_component, on_destroy, css3, Root, base, assets, user_hooks, template, options, default_settings, empty, manifest, get_hooks, module_lookup, metadata_lookup;
-var init_app_d8448494 = __esm({
-  ".svelte-kit/output/server/chunks/app-d8448494.js"() {
+var init_app_c181147f = __esm({
+  ".svelte-kit/output/server/chunks/app-c181147f.js"() {
     init_shims();
     __accessCheck = (obj, member, msg) => {
       if (!member.has(obj))
@@ -6468,7 +6470,7 @@ ${``}`;
           type: "endpoint",
           pattern: /^\/api\/meetings\/?$/,
           params: empty,
-          load: () => Promise.resolve().then(() => (init_meetings_9deba3be(), meetings_9deba3be_exports))
+          load: () => Promise.resolve().then(() => (init_meetings_3cfb8672(), meetings_3cfb8672_exports))
         }
       ]
     };
@@ -6479,9 +6481,9 @@ ${``}`;
       externalFetch: hooks.externalFetch || fetch
     });
     module_lookup = {
-      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_242cb0de(), layout_242cb0de_exports)),
-      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_9f32c7a0(), error_9f32c7a0_exports)),
-      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_1b1bf8e2(), index_1b1bf8e2_exports))
+      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_366713ea(), layout_366713ea_exports)),
+      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_d245d65b(), error_d245d65b_exports)),
+      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_15547dd4(), index_15547dd4_exports))
     };
     metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-a2ffd77e.js", "css": ["assets/pages/__layout.svelte-994991f0.css"], "js": ["pages/__layout.svelte-a2ffd77e.js", "chunks/vendor-fb0584a8.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-1c8ee9cd.js", "css": [], "js": ["error.svelte-1c8ee9cd.js", "chunks/vendor-fb0584a8.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-2f48afbb.js", "css": ["assets/pages/index.svelte-4ae2bc2a.css"], "js": ["pages/index.svelte-2f48afbb.js", "chunks/vendor-fb0584a8.js"], "styles": [] } };
   }
@@ -6495,7 +6497,7 @@ init_shims();
 
 // .svelte-kit/output/server/app.js
 init_shims();
-init_app_d8448494();
+init_app_c181147f();
 
 // .svelte-kit/netlify/entry.js
 init();
