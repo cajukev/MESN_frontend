@@ -66,7 +66,8 @@
 			}
 			// Time has passed
 			const date = new Date();
-			if(!date.getHours() <= timeSlot.time.split(":")[0] && timeSlot.day == date.getDate()){
+			console.log(date.getHours())
+			if(date.getHours() >= timeSlot.time.split(":")[0] && timeSlot.day == date.getDate()){
 				flag = true
 			}
 			
@@ -247,8 +248,11 @@
 						}
 					}
 					&.chosen {
-						border: 2px dashed black;
-						background: #9ba3ee;
+						& .timeSlot{
+							background:linear-gradient(135deg, #ff9c41 0%, #f27c0f 100%), linear-gradient(135deg, #ff7c05 0%, rgba(255, 184, 119, 0.770833) 99.99%, rgba(255, 122, 0, 0) 100%) ;
+						}
+						
+						
 					}
 					& .timeSlot {
 						border-radius: 0.5rem;
