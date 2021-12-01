@@ -19,6 +19,7 @@
     "netlify-cli": "^8.0.5",
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.4.0",
+    "sass": "^1.43.5",
     "svelte": "^3.44.0",
     "svelte-preprocess": "^4.9.8"
   },
