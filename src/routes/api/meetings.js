@@ -1,5 +1,7 @@
 export async function get(){
-  const meetings = fetch('http://localhost:8080/api/meetings')
+  const meetings = fetch('http://localhost:8080/api/meetings',{
+    mode:"cors"
+  })
   .then(response => response.json())
   return {
     body: await meetings

@@ -4696,41 +4696,84 @@ var init_shims = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/meetings-450f897b.js
-var meetings_450f897b_exports = {};
-__export(meetings_450f897b_exports, {
-  get: () => get
+// .svelte-kit/output/server/chunks/meetings-9deba3be.js
+var meetings_9deba3be_exports = {};
+__export(meetings_9deba3be_exports, {
+  get: () => get,
+  post: () => post
 });
 async function get() {
+  const meetings = fetch("http://localhost:8080/api/meetings").then((response) => response.json());
   return {
-    body: { "status": "success", "message": "Meetings retrieved successfully", "data": [{ "_id": "61a3ee1e1bfb3377c633c3f5", "create_date": "2021-11-28T21:01:18.787Z", "name": "Kevin", "email": "kevin@email", "phone": "00000000", "__v": 0 }] }
+    body: await meetings
   };
 }
-var init_meetings_450f897b = __esm({
-  ".svelte-kit/output/server/chunks/meetings-450f897b.js"() {
+async function post(request) {
+  const items = JSON.parse(request.body);
+  const name = items.name;
+  const email = items.email;
+  const phone = items.phone;
+  const day = items.day;
+  const month = items.month;
+  const time = items.time;
+  const res = await fetch("http://localhost:8080/api/meetings", {
+    method: "POST",
+    mode: "cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ "name": name, "email": email, "phone": phone, "day": day, "month": month, "time": time })
+  }).catch((err) => {
+    console.log(err);
+    return err;
+  }).then((ret) => {
+    return ret;
+  });
+  return {
+    body: await res
+  };
+}
+var init_meetings_9deba3be = __esm({
+  ".svelte-kit/output/server/chunks/meetings-9deba3be.js"() {
     init_shims();
   }
 });
 
-// .svelte-kit/output/server/chunks/layout-6c98c303.js
-var layout_6c98c303_exports = {};
-__export(layout_6c98c303_exports, {
-  default: () => Layout
+// .svelte-kit/output/server/chunks/__layout-242cb0de.js
+var layout_242cb0de_exports = {};
+__export(layout_242cb0de_exports, {
+  default: () => _layout
 });
-var Layout;
-var init_layout_6c98c303 = __esm({
-  ".svelte-kit/output/server/chunks/layout-6c98c303.js"() {
+var css$1, Header, css, _layout;
+var init_layout_242cb0de = __esm({
+  ".svelte-kit/output/server/chunks/__layout-242cb0de.js"() {
     init_shims();
-    init_app_259e8d9b();
-    Layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      return `${slots.default ? slots.default({}) : ``}`;
+    init_app_d8448494();
+    css$1 = {
+      code: "header.svelte-1vkojjp.svelte-1vkojjp{padding-top:2rem;padding-bottom:1rem;display:flex;flex-direction:row;justify-content:space-between;height:9rem}header.svelte-1vkojjp .logo.svelte-1vkojjp{display:flex;align-items:flex-end}header.svelte-1vkojjp .logo .logoKB.svelte-1vkojjp{height:100%}header.svelte-1vkojjp .logo .logoKB path.svelte-1vkojjp{stroke-dashoffset:688.246;animation:svelte-1vkojjp-pathAnim 10s linear alternate infinite}header.svelte-1vkojjp .logo .logoweb.svelte-1vkojjp{height:33%}header.svelte-1vkojjp p.svelte-1vkojjp{align-self:flex-end;margin-block-end:-0.4rem}@keyframes svelte-1vkojjp-pathAnim{100%{stroke-dashoffset:0}}",
+      map: null
+    };
+    Header = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css$1);
+      return `<header class="${"svelte-1vkojjp"}"><div class="${"logo svelte-1vkojjp"}"><svg class="${"logoKB svelte-1vkojjp"}" viewBox="${"0 0 128 89"}" fill="${"none"}" xmlns="${"http://www.w3.org/2000/svg"}"><path d="${"M2.56051 86.3107L7.21525 86.3281V19.2297H1.45532V2.4552H22.5128V86.328H99.0799C131.498 85.5591 136.524 40.8083 99.0799 40.7861C120.553 40.044 119.668 2.60677 99.0799 2.4552H76.4364V78.3582H53.4901L30.1616 40.7861L53.4901 2.4552H68.4052L45.459 40.7861L60.8011 65.7708"}" stroke="${"#0400C7"}" stroke-width="${"5"}" stroke-dasharray="${"688.246 20"}" class="${"svelte-1vkojjp"}"></path></svg>
+		<svg class="${"logoweb svelte-1vkojjp"}" viewBox="${"0 0 120 42"}" fill="${"none"}" xmlns="${"http://www.w3.org/2000/svg"}"><path d="${"M46.2786 10.7664L36.3243 41.4953H30.8524L23.1684 17.1028L15.4844 41.4953H10.0125L0 10.7664H5.41372L12.7484 36.5607L20.6653 10.7664H26.079L33.8212 36.6168L41.0395 10.7664H46.2786Z"}" fill="${"#0400C7"}" class="${"svelte-1vkojjp"}"></path><path d="${"M80.6418 24.9533C80.6418 25.9252 80.5836 26.9533 80.4672 28.0374H54.9703C55.1644 31.0654 56.2316 33.4392 58.172 35.1589C60.1512 36.8411 62.5379 37.6822 65.3321 37.6822C67.6218 37.6822 69.5234 37.1776 71.0369 36.1682C72.5892 35.1215 73.6758 33.7383 74.2967 32.0187H80.0015C79.1477 34.972 77.4402 37.3832 74.8789 39.2523C72.3175 41.0841 69.1353 42 65.3321 42C62.3051 42 59.5885 41.3458 57.1824 40.0374C54.8151 38.729 52.9523 36.8785 51.594 34.486C50.2358 32.0561 49.5566 29.2523 49.5566 26.0748C49.5566 22.8972 50.2164 20.1121 51.5358 17.7196C52.8553 15.3271 54.6987 13.4953 57.066 12.2243C59.4721 10.9159 62.2274 10.2617 65.3321 10.2617C68.3591 10.2617 71.0369 10.8972 73.3653 12.1682C75.6938 13.4393 77.479 15.1963 78.7208 17.4393C80.0015 19.6449 80.6418 22.1495 80.6418 24.9533ZM75.1699 23.8878C75.1699 21.9439 74.7236 20.2804 73.831 18.8972C72.9385 17.4766 71.716 16.4112 70.1637 15.7009C68.6502 14.9533 66.962 14.5794 65.0992 14.5794C62.4215 14.5794 60.1318 15.4019 58.2302 17.0467C56.3674 18.6916 55.3002 20.972 55.0286 23.8878H75.1699Z"}" fill="${"#0400C7"}" class="${"svelte-1vkojjp"}"></path><path d="${"M92.9314 16.486C94.018 14.6542 95.6092 13.1589 97.7048 12C99.8004 10.8411 102.187 10.2617 104.865 10.2617C107.737 10.2617 110.317 10.9159 112.607 12.2243C114.897 13.5327 116.701 15.3832 118.021 17.7757C119.34 20.1308 120 22.8785 120 26.0187C120 29.1215 119.34 31.8878 118.021 34.3178C116.701 36.7477 114.877 38.6355 112.549 39.9813C110.259 41.3271 107.698 42 104.865 42C102.11 42 99.684 41.4206 97.5884 40.2617C95.5315 39.1028 93.9792 37.6262 92.9314 35.8318V41.4953H87.6341V0H92.9314V16.486ZM114.586 26.0187C114.586 23.7009 114.101 21.6822 113.131 19.9626C112.161 18.243 110.841 16.9346 109.173 16.0374C107.543 15.1402 105.738 14.6916 103.759 14.6916C101.818 14.6916 100.014 15.1589 98.3451 16.0935C96.7152 16.9907 95.3957 18.3178 94.3867 20.0748C93.4165 21.7944 92.9314 23.7944 92.9314 26.0748C92.9314 28.3925 93.4165 30.4299 94.3867 32.1869C95.3957 33.9065 96.7152 35.2336 98.3451 36.1682C100.014 37.0654 101.818 37.514 103.759 37.514C105.738 37.514 107.543 37.0654 109.173 36.1682C110.841 35.2336 112.161 33.9065 113.131 32.1869C114.101 30.4299 114.586 28.3738 114.586 26.0187Z"}" fill="${"#0400C7"}" class="${"svelte-1vkojjp"}"></path></svg></div>
+
+	<p class="${"header-info svelte-1vkojjp"}">A presentation demo.</p>
+</header>`;
+    });
+    css = {
+      code: ':root{--brand-color:#0400C7}*{box-sizing:border-box;margin:0}html{background-color:#EDEDF6;max-width:100%;min-height:100%;position:relative}body{line-height:1.5;-webkit-font-smoothing:antialiased}h1{font-family:"Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;font-weight:500}h2{font-family:"Segoe UI", Candara, "Bitstream Vera Sans", "DejaVu Sans", "Bitstream Vera Sans", "Trebuchet MS", Verdana, "Verdana Ref", sans-serif;font-weight:400}p,label,button{font-family:Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;line-height:140%;font-weight:300}@media(max-width: 420px){html{font-size:1rem}h1{font-size:1.5rem}h2{font-size:1.25rem}}@media(min-width: 421px){html{font-size:calc(1rem + 0.3vw)}h1{font-size:calc(1.8rem + 0.3vw)}h2{font-size:calc(1.2rem + 0.3vw)}}@media(min-width: 1921px){html{font-size:calc(1rem + 0.6vw)}h1{font-size:calc(2.1rem + 0.6vw)}h2{font-size:calc(1.8rem + 0.6vw)}}@media(min-width: 1025px){body{padding:0 4rem}}',
+      map: null
+    };
+    _layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css);
+      return `${validate_component(Header, "Header").$$render($$result, {}, {}, {})}
+${slots.default ? slots.default({}) : ``}`;
     });
   }
 });
 
-// .svelte-kit/output/server/chunks/error-0bfb2263.js
-var error_0bfb2263_exports = {};
-__export(error_0bfb2263_exports, {
+// .svelte-kit/output/server/chunks/error-9f32c7a0.js
+var error_9f32c7a0_exports = {};
+__export(error_9f32c7a0_exports, {
   default: () => Error2,
   load: () => load
 });
@@ -4738,10 +4781,10 @@ function load({ error: error2, status }) {
   return { props: { error: error2, status } };
 }
 var Error2;
-var init_error_0bfb2263 = __esm({
-  ".svelte-kit/output/server/chunks/error-0bfb2263.js"() {
+var init_error_9f32c7a0 = __esm({
+  ".svelte-kit/output/server/chunks/error-9f32c7a0.js"() {
     init_shims();
-    init_app_259e8d9b();
+    init_app_d8448494();
     Error2 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       let { status } = $$props;
       let { error: error2 } = $$props;
@@ -4761,53 +4804,73 @@ ${error2.stack ? `<pre>${escape(error2.stack)}</pre>` : ``}`;
   }
 });
 
-// .svelte-kit/output/server/chunks/index-9959e692.js
-var index_9959e692_exports = {};
-__export(index_9959e692_exports, {
+// .svelte-kit/output/server/chunks/index-1b1bf8e2.js
+var index_1b1bf8e2_exports = {};
+__export(index_1b1bf8e2_exports, {
   default: () => Routes,
   load: () => load2
 });
 function addXDays(date, x) {
   return date + 1e3 * 60 * 60 * 24 * x;
 }
-var Header, currentDay, Form_picker, load2, Routes;
-var init_index_9959e692 = __esm({
-  ".svelte-kit/output/server/chunks/index-9959e692.js"() {
+var css$12, Form_picker, css2, load2, Routes;
+var init_index_1b1bf8e2 = __esm({
+  ".svelte-kit/output/server/chunks/index-1b1bf8e2.js"() {
     init_shims();
-    init_app_259e8d9b();
-    Header = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      return `<header><svg id="${"logo"}"></svg>
-  <p class="${"header-info"}">A presentation demo</p></header>`;
-    });
-    currentDay = 0;
+    init_app_d8448494();
+    css$12 = {
+      code: ".form-picker.svelte-1rxms7.svelte-1rxms7{margin-top:3rem;display:grid;grid-template-columns:1fr 3fr}.form-picker.svelte-1rxms7 form.svelte-1rxms7{background-color:#efefef;border:1px solid #bbbbbb;padding:1rem;height:fit-content;margin-right:2rem}.form-picker.svelte-1rxms7 form label.svelte-1rxms7:not(.cb-label){display:block}.form-picker.svelte-1rxms7 form input[type=text].svelte-1rxms7{width:100%}.form-picker.svelte-1rxms7 .date-time-picker.svelte-1rxms7{background-color:#efefef;border:1px solid #bbbbbb;padding:1rem}.form-picker.svelte-1rxms7 .date-time-picker .date-picker.svelte-1rxms7{display:grid;grid-template-columns:2fr repeat(7, 1fr) 2fr;align-items:center;justify-items:center}.form-picker.svelte-1rxms7 .date-time-picker .date-picker .prev-button.svelte-1rxms7,.form-picker.svelte-1rxms7 .date-time-picker .date-picker .next-button.svelte-1rxms7{border:none;width:1.5rem;cursor:pointer}.form-picker.svelte-1rxms7 .date-time-picker .date-picker .date.svelte-1rxms7{text-align:center}.form-picker.svelte-1rxms7 .date-time-picker .date-picker .date .date-day.svelte-1rxms7{font-weight:400}.form-picker.svelte-1rxms7 .date-time-picker .date-picker .date .date-num.svelte-1rxms7{font-size:1.8rem;font-weight:700}.form-picker.svelte-1rxms7 .date-time-picker .date-picker .date .date-btn.svelte-1rxms7{width:1.5rem;padding:0;border:none;cursor:pointer}.form-picker.svelte-1rxms7 .date-time-picker .time-picker.svelte-1rxms7{margin-top:1rem;display:grid;grid-template-columns:repeat(6, 1fr);grid-template-rows:repeat(4, 1fr);gap:1rem}.form-picker.svelte-1rxms7 .date-time-picker .time-picker button.svelte-1rxms7{padding:0;margin:0;border:none}.form-picker.svelte-1rxms7 .date-time-picker .time-picker button.inactive.svelte-1rxms7{pointer-events:none}.form-picker.svelte-1rxms7 .date-time-picker .time-picker button.inactive .timeSlot.svelte-1rxms7{background:white;opacity:0.75}.form-picker.svelte-1rxms7 .date-time-picker .time-picker button.chosen.svelte-1rxms7{border:2px dashed black;background:#9ba3ee}.form-picker.svelte-1rxms7 .date-time-picker .time-picker button .timeSlot.svelte-1rxms7{border-radius:0.5rem;display:grid;justify-content:center;align-items:center;box-shadow:0px 0.125rem 0.25rem rgba(0, 0, 0, 0.1);background:#a6aef2;cursor:pointer;padding:0.25rem 0.1rem}.form-picker.svelte-1rxms7 .date-time-picker .time-picker button .timeSlot .timeSlot-time.svelte-1rxms7{font-size:1rem;font-weight:700;text-align:center}",
+      map: null
+    };
     Form_picker = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      let timeSlots;
       let week;
       let { booked } = $$props;
       const dayStrings = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
       const dateNow = Date.now();
       let currentWeek = 0;
+      let currentDay = 0;
+      let chosenTime = "";
+      let name;
+      let email;
+      let phone;
+      let cb;
       function generateTimeSlots() {
-        let timeSlots = [];
+        let timeSlots2 = [];
         for (let i = 9; i < 21; i++) {
           const date = new Date(addXDays(dateNow, currentDay + currentWeek * 7));
           let first = {
-            "month": date.getMonth(),
-            "date": date.getDate(),
-            "time": i + ":00 - " + i + ":30"
+            month: date.getMonth(),
+            day: date.getDate(),
+            time: i + ":00 - " + i + ":30"
           };
           let second = {
-            "month": date.getMonth(),
-            "date": date.getDate(),
-            "time": i + ":30 - " + (i + 1) + ":00"
+            month: date.getMonth(),
+            day: date.getDate(),
+            time: i + ":30 - " + (i + 1) + ":00"
           };
-          timeSlots.push(first);
-          timeSlots.push(second);
+          timeSlots2.push(first);
+          timeSlots2.push(second);
         }
-        return timeSlots;
+        return timeSlots2;
+      }
+      function isBooked(timeSlot) {
+        let flag = false;
+        booked.forEach((bookedSlot) => {
+          if (timeSlot.day == bookedSlot.day && timeSlot.time == bookedSlot.time && timeSlot.month == bookedSlot.month) {
+            flag = true;
+          }
+          const date = new Date();
+          if (!date.getHours() <= timeSlot.time.split(":")[0] && timeSlot.day == date.getDate()) {
+            flag = true;
+          }
+        });
+        return flag;
       }
       if ($$props.booked === void 0 && $$bindings.booked && booked !== void 0)
         $$bindings.booked(booked);
-      generateTimeSlots();
+      $$result.css.add(css$12);
+      timeSlots = generateTimeSlots();
       week = [
         new Date(addXDays(dateNow, 0 + currentWeek * 7)),
         new Date(addXDays(dateNow, 1 + currentWeek * 7)),
@@ -4817,20 +4880,31 @@ var init_index_9959e692 = __esm({
         new Date(addXDays(dateNow, 5 + currentWeek * 7)),
         new Date(addXDays(dateNow, 6 + currentWeek * 7))
       ];
-      return `<div class="${"form-picker"}"><form><label for="${"name"}">Name</label>
-    <input type="${"text"}" name="${"name"}" id="${"name"}">
-    <label for="${"email"}">Email</label>
-    <input type="${"text"}" name="${"email"}" id="${"email"}">
-    <label for="${"phone"}">Phone</label>
-    <input type="${"text"}" name="${"phone"}" id="${"phone"}"></form>
-  <div class="${"date-time-picker"}"><div class="${"date-picker"}"><button class="${"prev-button"}">Prev</button>
-      ${each(week, (day, i) => `<div class="${"date"}"><p class="${"date-day"}">${escape(dayStrings[day.getDay()])}</p>
-          <p class="${"date-num"}">${escape(day.getDate())}</p>
-        </div>`)}
-      <button class="${"next-button"}">Next</button></div>
-    <div class="${"time-picker"}"></div></div></div>
-${escape(booked[0].name)}`;
+      return `<div class="${"form-picker svelte-1rxms7"}"><form class="${"svelte-1rxms7"}"><label for="${"name"}" class="${"svelte-1rxms7"}">Name</label>
+		<input type="${"text"}" name="${"name"}" id="${"name"}" class="${"svelte-1rxms7"}"${add_attribute("value", name, 0)}>
+		<label for="${"email"}" class="${"svelte-1rxms7"}">Email</label>
+		<input type="${"text"}" name="${"email"}" id="${"email"}" class="${"svelte-1rxms7"}"${add_attribute("value", email, 0)}>
+		<label for="${"phone"}" class="${"svelte-1rxms7"}">Phone</label>
+		<input type="${"text"}" name="${"phone"}" id="${"phone"}" class="${"svelte-1rxms7"}"${add_attribute("value", phone, 0)}>
+		<div class="${"cb"}"><input type="${"checkbox"}" id="${"cb"}" name="${"cb"}"${add_attribute("checked", cb, 1)}>
+			<label class="${"cb-label svelte-1rxms7"}" for="${"cb"}">By submitting these details I consent to be contacted by KBweb in the near future to
+				briefly discuss our meeting.</label></div>
+
+		<input type="${"button"}" value="${"Submit"}"></form>
+	<div class="${"date-time-picker svelte-1rxms7"}"><div class="${"date-picker svelte-1rxms7"}"><button class="${"prev-button svelte-1rxms7"}"><svg viewBox="${"0 0 24 53"}" fill="${"none"}" xmlns="${"http://www.w3.org/2000/svg"}"><path d="${"M24 49.1124L24 26.5V3.88764C24 1.0161 20.354 -0.214615 18.6137 2.0695L0 26.5L18.6137 50.9305C20.354 53.2146 24 51.9839 24 49.1124Z"}" stroke="${"black"}"${add_attribute("fill", "", 0)}></path></svg></button>
+			${each(week, (day, i) => `<div class="${"date svelte-1rxms7"}"${add_attribute("title", day.getDate() + "/" + (day.getMonth() + 1) + "/" + day.getFullYear(), 0)}><p class="${"date-day svelte-1rxms7"}">${escape(dayStrings[day.getDay()])}</p>
+					<p class="${"date-num svelte-1rxms7"}">${escape(day.getDate())}</p>
+					<button class="${"date-btn svelte-1rxms7"}"><svg viewBox="${"0 0 19 11"}" fill="${"none"}" xmlns="${"http://www.w3.org/2000/svg"}"><path d="${"M3.91826 0H9.5H15.0817C17.9564 0 19.1852 3.65264 16.8949 5.39007L9.5 11L2.1051 5.39007C-0.18515 3.65264 1.04356 0 3.91826 0Z"}" stroke="${"black"}"${add_attribute("fill", currentDay == i ? "black" : "", 0)}></path></svg></button>
+				</div>`)}
+			<button class="${"next-button svelte-1rxms7"}"><svg viewBox="${"0 0 24 53"}" fill="${"none"}" xmlns="${"http://www.w3.org/2000/svg"}"><path d="${"M0 49.1124L0 26.5L0 3.88764C0 1.0161 3.64601 -0.214615 5.38629 2.0695L24 26.5L5.38629 50.9305C3.64601 53.2146 0 51.9839 0 49.1124Z"}" stroke="${"black"}"${add_attribute("fill", "black", 0)}></path></svg></button></div>
+		<div class="${"time-picker svelte-1rxms7"}">${each(timeSlots, (timeSlot, i) => `<button class="${escape(isBooked(timeSlot) ? "inactive" : "active") + " " + escape(timeSlot.time == chosenTime ? "chosen" : "") + " svelte-1rxms7"}"><div class="${"timeSlot  svelte-1rxms7"}"><p class="${"timeSlot-time svelte-1rxms7"}">${escape(timeSlot.time)}</p></div>
+				</button>`)}</div></div>
+</div>`;
     });
+    css2 = {
+      code: ".page.svelte-1mcgznd.svelte-1mcgznd{background-color:#f9f9f9;box-shadow:0px 0px 1rem rgba(0, 0, 0, 0.05);padding:4rem}.page.svelte-1mcgznd .greeting-grid.svelte-1mcgznd{display:grid;grid-template-columns:2fr 1fr}.page.svelte-1mcgznd .greeting-grid .greeting-grid-text h1.svelte-1mcgznd{color:var(--brand-color);text-shadow:0px 0.25rem 0.5rem rgba(0, 0, 0, 0.1)}.page.svelte-1mcgznd .greeting-grid .greeting-grid-text h1 .orange.svelte-1mcgznd{color:#f27c0f}.page.svelte-1mcgznd .greeting-grid .greeting-grid-text .filler-text.svelte-1mcgznd{margin-top:3rem}.page.svelte-1mcgznd .greeting-grid .squares.svelte-1mcgznd{padding-left:5rem;display:grid;grid-template-columns:repeat(3, 1fr);grid-template-rows:repeat(4, 1fr);align-items:center;justify-items:center;gap:2rem}.page.svelte-1mcgznd .greeting-grid .squares .square.svelte-1mcgznd{width:3.5rem;height:3.5rem;border-radius:1rem;box-shadow:0rem 0.5rem 1rem rgba(0, 0, 0, 0.15)}.page.svelte-1mcgznd .greeting-grid .squares .square.v1.svelte-1mcgznd{background:#7b8dea;animation:svelte-1mcgznd-square-idle 8s ease infinite}.page.svelte-1mcgznd .greeting-grid .squares .square.v2.svelte-1mcgznd{background:#a6aef2;animation:svelte-1mcgznd-square-idle 8s 1s ease infinite}.page.svelte-1mcgznd .greeting-grid .squares .square.v3.svelte-1mcgznd{background:#8d9cee;animation:svelte-1mcgznd-square-idle 8s 2s ease infinite}.page.svelte-1mcgznd .greeting-grid .squares .square.special.svelte-1mcgznd{background:linear-gradient(135deg, #ff9c41 0%, #f27c0f 100%), linear-gradient(135deg, #ff7c05 0%, rgba(255, 184, 119, 0.770833) 99.99%, rgba(255, 122, 0, 0) 100%);box-shadow:0rem 0rem 1rem rgba(233, 111, 0, 0.6);animation:svelte-1mcgznd-square-spin 8s linear infinite}@keyframes svelte-1mcgznd-square-spin{to{transform:rotate(360deg)}}@keyframes svelte-1mcgznd-square-idle{33%{transform:rotate(-10deg)}66%{transform:rotate(10deg)}}",
+      map: null
+    };
     load2 = async ({ fetch: fetch2 }) => {
       const res = await fetch2("/api/meetings").then((response) => response.json()).then((json) => {
         return json;
@@ -4846,19 +4920,37 @@ ${escape(booked[0].name)}`;
       let { booked } = $$props;
       if ($$props.booked === void 0 && $$bindings.booked && booked !== void 0)
         $$bindings.booked(booked);
-      return `${validate_component(Header, "Header").$$render($$result, {}, {}, {})}
-<div class="${"page"}" id="${"index"}"><section class="${"greeting-grid"}"><h1><b>Stick out of the crowd</b> with a website that <span class="${"orange"}"><b>represents you.</b></span></h1>
-    <div class="${"filler-text"}"><h2>Mauris posuere velit nec aliquam mollis.</h2>
-      <p>Mauris posuere velit nec aliquam mollis. Donec ac risus cursus nisl laoreet fermentum. Duis laoreet vitae libero at facilisis. Aliquam erat volutpat. </p></div>
-    <div class="${"filler-text"}"><h2>Mauris posuere velit nec aliquam mollis.</h2>
-      <p>Mauris posuere velit nec aliquam mollis. Donec ac risus cursus nisl laoreet fermentum. Duis laoreet vitae libero at facilisis. Aliquam erat volutpat. </p></div>
-    <div class="${"squares"}"></div></section>
-  ${validate_component(Form_picker, "FormPicker").$$render($$result, { booked }, {}, {})}</div>`;
+      $$result.css.add(css2);
+      return `<div class="${"page svelte-1mcgznd"}" id="${"index"}"><section class="${"greeting-grid svelte-1mcgznd"}"><div class="${"greeting-grid-text"}"><h1 class="${"svelte-1mcgznd"}"><b>Stick out of the crowd</b> with a website that represents
+				<span class="${"orange svelte-1mcgznd"}"><b>you.</b></span></h1>
+			<div class="${"filler-text svelte-1mcgznd"}"><h2>Mauris posuere velit nec aliquam mollis.</h2>
+				<p>Mauris posuere velit nec aliquam mollis. Donec ac risus cursus nisl laoreet fermentum.
+					Duis laoreet vitae libero at facilisis. Aliquam erat volutpat.
+				</p></div>
+			<div class="${"filler-text svelte-1mcgznd"}"><h2>Mauris posuere velit nec aliquam mollis.</h2>
+				<p>Mauris posuere velit nec aliquam mollis. Donec ac risus cursus nisl laoreet fermentum.
+					Duis laoreet vitae libero at facilisis. Aliquam erat volutpat.
+				</p></div></div>
+
+		<div class="${"squares svelte-1mcgznd"}"><div class="${"square v1 svelte-1mcgznd"}"></div>
+			<div class="${"square v2 svelte-1mcgznd"}"></div>
+			<div class="${"square v1 svelte-1mcgznd"}"></div>
+			<div class="${"square v3 svelte-1mcgznd"}"></div>
+			<div class="${"square special svelte-1mcgznd"}"></div>
+			<div class="${"square v1 svelte-1mcgznd"}"></div>
+			<div class="${"square v1 svelte-1mcgznd"}"></div>
+			<div class="${"square v2 svelte-1mcgznd"}"></div>
+			<div class="${"square v3 svelte-1mcgznd"}"></div>
+			<div class="${"square v3 svelte-1mcgznd"}"></div>
+			<div class="${"square v2 svelte-1mcgznd"}"></div>
+			<div class="${"square v1 svelte-1mcgznd"}"></div></div></section>
+	${validate_component(Form_picker, "FormPicker").$$render($$result, { booked }, {}, {})}
+</div>`;
     });
   }
 });
 
-// .svelte-kit/output/server/chunks/app-259e8d9b.js
+// .svelte-kit/output/server/chunks/app-d8448494.js
 function get_single_valued_header(headers, key) {
   const value = headers[key];
   if (Array.isArray(value)) {
@@ -5252,7 +5344,7 @@ async function render_response({
   error: error2,
   page
 }) {
-  const css2 = new Set(options2.entry.css);
+  const css22 = new Set(options2.entry.css);
   const js = new Set(options2.entry.js);
   const styles = new Set();
   const serialized_data = [];
@@ -5265,7 +5357,7 @@ async function render_response({
   if (page_config.ssr) {
     branch.forEach(({ node, loaded, fetched, uses_credentials }) => {
       if (node.css)
-        node.css.forEach((url) => css2.add(url));
+        node.css.forEach((url) => css22.add(url));
       if (node.js)
         node.js.forEach((url) => js.add(url));
       if (node.styles)
@@ -5308,7 +5400,7 @@ async function render_response({
     js.clear();
   const links = options2.amp ? styles.size > 0 || rendered.css.code.length > 0 ? `<style amp-custom>${Array.from(styles).concat(rendered.css.code).join("\n")}</style>` : "" : [
     ...Array.from(js).map((dep) => `<link rel="modulepreload" href="${dep}">`),
-    ...Array.from(css2).map((dep) => `<link rel="stylesheet" href="${dep}">`)
+    ...Array.from(css22).map((dep) => `<link rel="stylesheet" href="${dep}">`)
   ].join("\n		");
   let init2 = "";
   if (options2.amp) {
@@ -6116,7 +6208,7 @@ function create_ssr_component(fn) {
       return {
         html,
         css: {
-          code: Array.from(result.css).map((css2) => css2.code).join("\n"),
+          code: Array.from(result.css).map((css22) => css22.code).join("\n"),
           map: null
         },
         head: result.title + result.head
@@ -6124,6 +6216,11 @@ function create_ssr_component(fn) {
     },
     $$render
   };
+}
+function add_attribute(name, value, boolean) {
+  if (value == null || boolean && !value)
+    return "";
+  return ` ${name}${value === true ? "" : `=${typeof value === "string" ? JSON.stringify(escape(value)) : `"${value}"`}`}`;
 }
 function afterUpdate() {
 }
@@ -6141,9 +6238,9 @@ function init(settings = default_settings) {
     amp: false,
     dev: false,
     entry: {
-      file: assets + "/_app/start-4f34d381.js",
+      file: assets + "/_app/start-86fbbb9f.js",
       css: [assets + "/_app/assets/start-61d1577b.css"],
-      js: [assets + "/_app/start-4f34d381.js", assets + "/_app/chunks/vendor-ab78b473.js"]
+      js: [assets + "/_app/start-86fbbb9f.js", assets + "/_app/chunks/vendor-fb0584a8.js"]
     },
     fetched: void 0,
     floc: false,
@@ -6171,11 +6268,11 @@ function init(settings = default_settings) {
   };
 }
 async function load_component(file) {
-  const { entry, css: css2, js, styles } = metadata_lookup[file];
+  const { entry, css: css22, js, styles } = metadata_lookup[file];
   return {
     module: await module_lookup[file](),
     entry: assets + "/_app/" + entry,
-    css: css2.map((dep) => assets + "/_app/" + dep),
+    css: css22.map((dep) => assets + "/_app/" + dep),
     js: js.map((dep) => assets + "/_app/" + dep),
     styles
   };
@@ -6186,9 +6283,9 @@ function render(request, {
   const host = request.headers["host"];
   return respond({ ...request, host }, options, { prerender });
 }
-var __accessCheck, __privateGet, __privateAdd, __privateSet, _map, absolute, scheme, chars, unsafeChars, reserved, escaped$1, objectProtoOwnPropertyNames, subscriber_queue, escape_json_string_in_html_dict, escape_html_attr_dict, s$1, s, ReadOnlyFormData, current_component, escaped, missing_component, on_destroy, css, Root, base, assets, user_hooks, template, options, default_settings, empty, manifest, get_hooks, module_lookup, metadata_lookup;
-var init_app_259e8d9b = __esm({
-  ".svelte-kit/output/server/chunks/app-259e8d9b.js"() {
+var __accessCheck, __privateGet, __privateAdd, __privateSet, _map, absolute, scheme, chars, unsafeChars, reserved, escaped$1, objectProtoOwnPropertyNames, subscriber_queue, escape_json_string_in_html_dict, escape_html_attr_dict, s$1, s, ReadOnlyFormData, current_component, escaped, missing_component, on_destroy, css3, Root, base, assets, user_hooks, template, options, default_settings, empty, manifest, get_hooks, module_lookup, metadata_lookup;
+var init_app_d8448494 = __esm({
+  ".svelte-kit/output/server/chunks/app-d8448494.js"() {
     init_shims();
     __accessCheck = (obj, member, msg) => {
       if (!member.has(obj))
@@ -6305,7 +6402,7 @@ var init_app_259e8d9b = __esm({
     missing_component = {
       $$render: () => ""
     };
-    css = {
+    css3 = {
       code: "#svelte-announcer.svelte-1j55zn5{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}",
       map: null
     };
@@ -6330,7 +6427,7 @@ var init_app_259e8d9b = __esm({
         $$bindings.props_1(props_1);
       if ($$props.props_2 === void 0 && $$bindings.props_2 && props_2 !== void 0)
         $$bindings.props_2(props_2);
-      $$result.css.add(css);
+      $$result.css.add(css3);
       {
         stores.page.set(page);
       }
@@ -6357,21 +6454,21 @@ ${``}`;
     empty = () => ({});
     manifest = {
       assets: [{ "file": "favicon.png", "size": 1571, "type": "image/png" }],
-      layout: ".svelte-kit/build/components/layout.svelte",
+      layout: "src/routes/__layout.svelte",
       error: ".svelte-kit/build/components/error.svelte",
       routes: [
         {
           type: "page",
           pattern: /^\/$/,
           params: empty,
-          a: [".svelte-kit/build/components/layout.svelte", "src/routes/index.svelte"],
+          a: ["src/routes/__layout.svelte", "src/routes/index.svelte"],
           b: [".svelte-kit/build/components/error.svelte"]
         },
         {
           type: "endpoint",
           pattern: /^\/api\/meetings\/?$/,
           params: empty,
-          load: () => Promise.resolve().then(() => (init_meetings_450f897b(), meetings_450f897b_exports))
+          load: () => Promise.resolve().then(() => (init_meetings_9deba3be(), meetings_9deba3be_exports))
         }
       ]
     };
@@ -6382,11 +6479,11 @@ ${``}`;
       externalFetch: hooks.externalFetch || fetch
     });
     module_lookup = {
-      ".svelte-kit/build/components/layout.svelte": () => Promise.resolve().then(() => (init_layout_6c98c303(), layout_6c98c303_exports)),
-      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_0bfb2263(), error_0bfb2263_exports)),
-      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_9959e692(), index_9959e692_exports))
+      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_242cb0de(), layout_242cb0de_exports)),
+      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_9f32c7a0(), error_9f32c7a0_exports)),
+      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_1b1bf8e2(), index_1b1bf8e2_exports))
     };
-    metadata_lookup = { ".svelte-kit/build/components/layout.svelte": { "entry": "layout.svelte-7ff0d1aa.js", "css": [], "js": ["layout.svelte-7ff0d1aa.js", "chunks/vendor-ab78b473.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-91f2c30b.js", "css": [], "js": ["error.svelte-91f2c30b.js", "chunks/vendor-ab78b473.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-0f551ee7.js", "css": [], "js": ["pages/index.svelte-0f551ee7.js", "chunks/vendor-ab78b473.js"], "styles": [] } };
+    metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-a2ffd77e.js", "css": ["assets/pages/__layout.svelte-994991f0.css"], "js": ["pages/__layout.svelte-a2ffd77e.js", "chunks/vendor-fb0584a8.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-1c8ee9cd.js", "css": [], "js": ["error.svelte-1c8ee9cd.js", "chunks/vendor-fb0584a8.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-2f48afbb.js", "css": ["assets/pages/index.svelte-4ae2bc2a.css"], "js": ["pages/index.svelte-2f48afbb.js", "chunks/vendor-fb0584a8.js"], "styles": [] } };
   }
 });
 
@@ -6398,7 +6495,7 @@ init_shims();
 
 // .svelte-kit/output/server/app.js
 init_shims();
-init_app_259e8d9b();
+init_app_d8448494();
 
 // .svelte-kit/netlify/entry.js
 init();
