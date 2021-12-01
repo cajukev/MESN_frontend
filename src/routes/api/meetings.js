@@ -1,6 +1,5 @@
 export async function get(){
   const meetings = fetch('http://localhost:8080/api/meetings',{
-    mode:"cors"
   })
   .then(response => response.json())
   return {
@@ -19,7 +18,6 @@ export async function post(request){
   
   const res = await fetch('http://localhost:8080/api/meetings', {
     method: 'POST',
-    mode: "cors",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({"name": name, "email": email, "phone": 
     phone, "day":day, "month":month, "time": time })
