@@ -1,11 +1,13 @@
 <script>
 	import Header from '../components/header.svelte';
+	import '../app.css';
 </script>
 
 <Header></Header>
 <slot></slot>
+<h1 class="w">hey</h1>
 
-<style lang="scss">
+<style lang="postcss">
   /* CSS Variables */
   :root{
     --brand-color: #0400C7;
